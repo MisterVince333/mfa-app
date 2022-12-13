@@ -1,11 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import Home from './pages/Home';
+import PrivateRoutes from './utils/PrivateRoutes';
 
 function App() {
   return (
     <>
-      <h1>Test</h1>
+      <Routes>
+            <Route element={<PrivateRoutes />}>
+                <Route path="/" element={<Home/>} />
+            </Route>
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+        </Routes>      
     </>
   );
 }
